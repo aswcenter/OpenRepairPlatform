@@ -1,0 +1,6 @@
+version: '2'
+
+services:
+  django:
+    build:
+      dockerfile: ./deployment/django/Dockerfile.dev

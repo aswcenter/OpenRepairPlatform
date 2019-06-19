@@ -20,7 +20,7 @@ Par défault, en développement, l'application tente de se connecter à la BDD
 "ateliersoude" en local en utilisant le compte de l'utilisateur courant, sans mot de passe
 
 .. code-block:: bash
-    
+
     createdb ateliersoude
     ./manage.py migrate
     ./manage.py createsuperuser
@@ -30,7 +30,19 @@ Si vous préférez, vous pouvez également lancer le projet en développement en
 
 .. code-block:: bash
 
-    sudo docker build -f deployment/docker-app/Dockerfile -t ateliersoude .
+    sudo docker build -f deployment/django/Dockerfile -t ateliersoude .
     sudo docker run -it --rm -p 8000:8000 ateliersoude
 
 Vous pouvez ensuite accéder au site à l'addresse http://127.0.0.1:8000/ l'utilisateur admin étant: admin@example.com passwd: adminpass
+
+Une recette docker-compose est disponible, avec une intégration de postgres comme service, avec les settings de developpement :
+
+.. code-block:: bash
+
+  sudo docker-compose -f deployment/docker-compose.yml -f deployment/docker-compose.dev.yml up --build
+
+Lancer la création de la base de données postgres (une fois le docker-compose en fonction):
+
+.. code-block:: bash
+
+  docker exec -ti deployment_postgres_1 createdb -U ateliersoude ateliersoude
