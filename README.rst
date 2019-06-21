@@ -35,11 +35,18 @@ Si vous préférez, vous pouvez également lancer le projet en développement en
 
 Vous pouvez ensuite accéder au site à l'addresse http://127.0.0.1:8000/ l'utilisateur admin étant: admin@example.com passwd: adminpass
 
-Une recette docker-compose est disponible, avec une intégration de postgres comme service, avec les settings de developpement :
+Des recettes docker-compose sont disponibles, avec une intégration de postgres comme service et nginx avec SSL
+
+environnement de production :
+
+.. code-block:: bash
+  docker-compose -f deployment/docker-compose.yml -f deployment/docker-compose.prod.yml up --build
+
+environnement de développement :
 
 .. code-block:: bash
 
-  sudo docker-compose -f deployment/docker-compose.yml -f deployment/docker-compose.dev.yml up --build
+  docker-compose -f deployment/docker-compose.yml -f deployment/docker-compose.dev.yml up --build
 
 Lancer la création de la base de données postgres (une fois le docker-compose en fonction):
 

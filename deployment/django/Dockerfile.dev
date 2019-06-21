@@ -19,7 +19,7 @@ WORKDIR /srv/app
 
 COPY manage.py .
 COPY deployment/django/uwsgi.ini .
-COPY deployment/django/start.sh /
+COPY deployment/django/start.sh .
 COPY ateliersoude ./ateliersoude
 COPY deployment/django/ateliersoude.cron /etc/cron.d/ateliersoude
 
@@ -27,4 +27,4 @@ RUN useradd ateliersoude
 
 EXPOSE 8000
 
-CMD /start.sh
+CMD ./start.sh
